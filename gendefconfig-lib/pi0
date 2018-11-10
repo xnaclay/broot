@@ -1,0 +1,5 @@
+#!/bin/bash
+
+include_defconfig raspberrypi0w
+
+POST_BUILD_SCRIPT="board/raspberrypi0w/post-build.sh ${POST_BUILD_SCRIPT}"

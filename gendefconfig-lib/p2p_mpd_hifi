@@ -1,0 +1,9 @@
+#!/bin/bash
+
+include pi0
+include base
+include wifi
+include ssh
+include alsa
+include hifiberry
+include mpd

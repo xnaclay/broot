@@ -1,0 +1,3 @@
+#!/bin/bash
+
+POST_BUILD_SCRIPT="${POST_BUILD_SCRIPT} ./brpi-post-hifiberry.sh"
