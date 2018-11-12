@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cat <<EOF
+BR2_PACKAGE_BLUEZ5_UTILS
+BR2_PACKAGE_BLUEZ5_UTILS_CLIENT
+BR2_PACKAGE_BLUEZ_TOOLS
+EOF
+
+OVERLAY="${OVERLAY} ../overlay-bluetooth"
+POST_IMAGE_SCRIPT="../broot-post-image-bluetooth.sh ${POST_IMAGE_SCRIPT}"

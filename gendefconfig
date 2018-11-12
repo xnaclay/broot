@@ -21,4 +21,6 @@ for genconf in $(ls gendefconfig-configs/); do
   echo
   echo "BR2_ROOTFS_OVERLAY=\"${OVERLAY}\""
   echo "BR2_ROOTFS_POST_BUILD_SCRIPT=\"${POST_BUILD_SCRIPT}\""
+  echo "BR2_ROOTFS_POST_IMAGE_SCRIPT=\"${POST_IMAGE_SCRIPT}\""
+  echo "BR2_ROOTFS_POST_SCRIPT_ARGS=\"${POST_SCRIPT_ARGS}\""
 done

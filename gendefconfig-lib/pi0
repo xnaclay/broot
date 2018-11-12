@@ -2,4 +2,11 @@
 
 include_defconfig raspberrypi0w
 
-POST_BUILD_SCRIPT="board/raspberrypi0w/post-build.sh ${POST_BUILD_SCRIPT}"
+cat <<EOF
+BR2_PACKAGE_RPI_WIFI_FIRMWARE=y
+BR2_PACKAGE_RPI_BT_FIRMWARE=y
+EOF
+
+POST_BUILD_SCRIPT="board/raspberrypi0w/post-build.sh ../broot-post-pi0w.sh ${POST_BUILD_SCRIPT}"
+POST_IMAGE_SCRIPT="${POST_IMAGE_SCRIPT} board/raspberrypi0w/post-image.sh"
+POST_SCRIPT_ARGS=""

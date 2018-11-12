@@ -1,0 +1,41 @@
+#!/bin/sh
+
+start() {
+        printf "Starting bluetoothd: "
+        /usr/libexec/bluetooth/bluetoothd &
+        echo $! > /var/run/bluetoothd.pid
+
+        if [[ -f /etc/.board-pi0w ]]; then
+                sleep 1
+                printf "Attaching bluetooth serial: "
+                btattach -B /dev/ttyAMA0 -P bcm -S 3000000 &
+                echo $! > /var/run/btattach.pid
+        fi
+}
+
+stop() {
+        printf "Stopping bluetoothd: "
+        kill $( cat /var/run/bluetoothd.pid )
+
+        if [[ -f /var/run/btattach.pid ]]; then
+                printf "Stopping bluetooth serial: "
+                kill $( cat /var/run/btattach.pid )
+        fi
+}
+
+case "$1" in
+        start)
+                start
+                ;;
+        stop)
+                stop
+                ;;
+        restart|reload)
+                stop
+                sleep 1
+                start
+                ;;
+        *)
+                echo "Usage: $0 {start|stop|restart}"
+                exit 1
+esac

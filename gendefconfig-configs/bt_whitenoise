@@ -3,10 +3,11 @@
 include pi0
 include base
 include wifi
+include bluetooth
 include ssh
 include alsa
 
 cat <<EOF
-BR2_PACKAGE_RPI_BT_FIRMWARE=y
+BR2_PACKAGE_BLUEZ_ALSA=y
 BR2_PACKAGE_WHITENOISE_BT_CONTROLLER=y
 EOF
