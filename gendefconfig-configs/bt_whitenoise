@@ -8,6 +8,10 @@ include ssh
 include alsa
 
 cat <<EOF
-BR2_PACKAGE_BLUEZ_ALSA=y
+# needed for SBC to not segfault (https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=856487)
+BR2_GCC_VERSION_4_9_X=y
+BR2_PACKAGE_SBC=y
+
+BR2_PACKAGE_PULSEAUDIO=y
 BR2_PACKAGE_WHITENOISE_BT_CONTROLLER=y
 EOF
